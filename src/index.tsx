@@ -1,10 +1,14 @@
+import "./global.css";
+
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { ColorModeScript } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript, theme } from "@chakra-ui/react";
 
-import ProtectedPage from "./pages/ProtectedPage";
+import { AuthProvider } from "./contexts/Auth";
+import LoginPage from "./pages/Login";
+import ProtectedPage from "./pages/Protected";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 
@@ -15,7 +19,7 @@ const root = ReactDOM.createRoot(container);
 const router = createBrowserRouter([
   {
     path: "/login",
-    element: <div>Login</div>,
+    element: <LoginPage />,
   },
   {
     path: "/",
@@ -42,7 +46,11 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <ColorModeScript />
-    <RouterProvider router={router} />
+    <ChakraProvider theme={theme}>
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
+    </ChakraProvider>
   </React.StrictMode>
 );
 

@@ -1,6 +1,8 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import { FC, User } from "../types";
+
+const localStorageName = "userData";
 
 interface Context {
   user: User | undefined;
@@ -17,12 +19,24 @@ const AuthContext = createContext<Context>({
     return;
   },
 });
-
 export const AuthProvider: FC = ({ children }) => {
   const [user, setUser] = useState<User | undefined>(undefined);
 
-  const login = (user: User) => setUser(user);
-  const logout = () => setUser(undefined);
+  useEffect(() => {
+    const data = localStorage.getItem(localStorageName);
+    if (data) {
+      setUser(JSON.parse(data) as User);
+    }
+  }, []);
+
+  const login = (user: User) => {
+    localStorage.setItem(localStorageName, JSON.stringify(user));
+    setUser(user);
+  };
+  const logout = () => {
+    localStorage.removeItem(localStorageName);
+    setUser(undefined);
+  };
 
   return (
     <AuthContext.Provider value={{ user, login, logout }}>
