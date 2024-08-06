@@ -4,13 +4,14 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import { ChakraProvider, ColorModeScript, theme } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
 import { AuthProvider } from "./contexts/Auth";
 import LoginPage from "./pages/Login";
 import ProtectedPage from "./pages/Protected";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
+import theme from "./theme";
 
 const container = document.getElementById("root");
 if (!container) throw new Error("Failed to find the root element");

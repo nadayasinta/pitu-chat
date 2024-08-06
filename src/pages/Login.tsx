@@ -12,6 +12,7 @@ import {
   FormControl,
   FormHelperText,
   FormLabel,
+  Image,
   Input,
   InputGroup,
   InputLeftElement,
@@ -19,6 +20,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 
+import BackgroundImage from "../assets/background-login.svg";
 import { useAuth } from "../contexts/Auth";
 
 const LoginPage = () => {
@@ -49,9 +51,23 @@ const LoginPage = () => {
 
   return (
     <Flex height="100vh">
-      <Box flex="1" h="100%" bgColor="blue"></Box>
+      <Box flex="1" h="100%" bgColor="blue">
+        <Image
+          src={BackgroundImage}
+          alt="Background"
+          width="100%"
+          height="100%"
+          objectFit="cover"
+        />
+      </Box>
       <Box flex="1" h="100%" alignContent="center">
         <Box maxWidth="80%" m="auto" as="form" onSubmit={handleSubmit}>
+          <Image
+            src="/logo.svg"
+            alt="PituChat Logo"
+            width="15"
+            objectFit="cover"
+          />
           <Text fontSize="3xl" fontWeight="bold">
             Login ke akunmu
           </Text>
@@ -62,7 +78,7 @@ const LoginPage = () => {
             <FormLabel mb="0">Email</FormLabel>
             <InputGroup>
               <InputLeftElement pointerEvents="none">
-                <EmailIcon color="gray.600" />
+                <EmailIcon />
               </InputLeftElement>
               <Input
                 type="email"
@@ -80,7 +96,7 @@ const LoginPage = () => {
             </FormLabel>
             <InputGroup>
               <InputLeftElement pointerEvents="none">
-                <LockIcon color="gray.600" />
+                <LockIcon />
               </InputLeftElement>
               <Input
                 type={showPassword ? "text" : "password"}
@@ -94,13 +110,11 @@ const LoginPage = () => {
               <InputRightElement width="10">
                 {showPassword ? (
                   <ViewOffIcon
-                    color="gray.600"
                     cursor="pointer"
                     onClick={() => setShowPassword(false)}
                   />
                 ) : (
                   <ViewIcon
-                    color="gray.600"
                     cursor="pointer"
                     onClick={() => setShowPassword(true)}
                   />
@@ -118,7 +132,6 @@ const LoginPage = () => {
           </FormControl>
           <Button
             type="submit"
-            colorScheme="blue"
             width="100%"
             my="5"
             isDisabled={!email || !password || showAlert}
