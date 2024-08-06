@@ -9,6 +9,7 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { AuthProvider } from "./contexts/Auth";
 import ProtectedLayout from "./layouts/Protected";
 import LoginPage from "./pages/Login";
+import ShopPage from "./pages/Shop";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 import theme from "./theme";
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/shop",
-        element: <div>Shop</div>,
+        element: <ShopPage />,
       },
     ],
   },

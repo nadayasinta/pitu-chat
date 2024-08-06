@@ -9,3 +9,11 @@ export interface User {
   email: string;
   name: string;
 }
+
+type EcommerceName = "tokopedia" | "shopee";
+
+export interface Shop {
+  id: number;
+  name: string;
+  ecommerce: EcommerceName;
+}
