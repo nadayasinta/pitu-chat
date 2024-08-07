@@ -154,7 +154,7 @@ const ProtectedLayout = () => {
           onClick={logout}
         />
       </GridItem>
-      <GridItem area="main" bg="gray.50" overflowY="scroll">
+      <GridItem area="main" bg="gray.50" overflowY="auto">
         <Outlet />
       </GridItem>
     </Grid>

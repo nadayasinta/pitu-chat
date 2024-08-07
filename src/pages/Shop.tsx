@@ -1,128 +1,63 @@
+import { useEffect, useState } from "react";
+
 import { AddIcon, CheckIcon } from "@chakra-ui/icons";
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 
 import ShopeeIcon from "../assets/icon-shopee.svg";
 import TokopediaIcon from "../assets/icon-tokopedia.svg";
-// import ShopeeLogo from "../logo/logo-shopee.svg";
-// import TokopediaLogo from "../logo/logo-tokopedia.svg";
+import ShopeeLogo from "../assets/logo-shopee.svg";
+import TokopediaLogo from "../assets/logo-tokopedia.svg";
+import { getShopList } from "../mock";
 import { Shop } from "../types";
 
 const imageList = {
   tokopedia: {
-    // logo: TokopediaLogo,
-    logo: TokopediaIcon,
+    logo: TokopediaLogo,
     icon: TokopediaIcon,
     color: "green.100",
   },
   shopee: {
-    // logo: ShopeeLogo,
-    logo: ShopeeIcon,
+    logo: ShopeeLogo,
     icon: ShopeeIcon,
     color: "orange.100",
   },
 };
-const shop: Shop[] = [
-  {
-    id: 1,
-    name: "Beauty Lovers",
-    ecommerce: "tokopedia",
-  },
-  {
-    id: 2,
-    name: "Beauty Lovers Official",
-    ecommerce: "shopee",
-  },
-  {
-    id: 1,
-    name: "Beauty Lovers",
-    ecommerce: "tokopedia",
-  },
-  {
-    id: 2,
-    name: "Beauty Lovers Official",
-    ecommerce: "shopee",
-  },
-  {
-    id: 1,
-    name: "Beauty Lovers",
-    ecommerce: "tokopedia",
-  },
-  {
-    id: 2,
-    name: "Beauty Lovers Official",
-    ecommerce: "shopee",
-  },
-  {
-    id: 1,
-    name: "Beauty Lovers",
-    ecommerce: "tokopedia",
-  },
-  {
-    id: 2,
-    name: "Beauty Lovers Official",
-    ecommerce: "shopee",
-  },
-  {
-    id: 2,
-    name: "Beauty Lovers Official",
-    ecommerce: "shopee",
-  },
-  {
-    id: 1,
-    name: "Beauty Lovers",
-    ecommerce: "tokopedia",
-  },
-  {
-    id: 2,
-    name: "Beauty Lovers Official",
-    ecommerce: "shopee",
-  },
-  {
-    id: 2,
-    name: "Beauty Lovers Official",
-    ecommerce: "shopee",
-  },
-  {
-    id: 1,
-    name: "Beauty Lovers",
-    ecommerce: "tokopedia",
-  },
-  {
-    id: 2,
-    name: "Beauty Lovers Official",
-    ecommerce: "shopee",
-  },
-];
 
 const ShopPage = () => {
+  const [shopList, setShopList] = useState<Shop[]>([]);
+
+  useEffect(() => {
+    setShopList(getShopList());
+  }, []);
+
   return (
-    <Box p="5">
+    <Box p="6">
       <Text fontWeight="bold" mb="6">
         Shop
       </Text>
       <Flex gap="6" wrap="wrap" alignItems="stretch">
-        {shop.map((item) => (
+        {shopList.map((item) => (
           <Box
             key={item.id}
             as={Flex}
             direction="column"
-            width="200px"
-            minHeight="220px"
+            width="190px"
+            minHeight="200px"
             bgColor="white"
-            p="5"
+            p="6"
             alignItems="center"
+            borderRadius="8px"
           >
             <Image
               src={imageList[item.ecommerce].logo}
               alt="Background"
-              height="60px"
-              objectFit="cover"
+              height="40px"
+              objectFit="contain"
             />
             <Flex
               gap="1"
-              px="2"
-              py="1"
-              my="3"
+              p="1"
+              my="4"
               alignItems="center"
               borderRadius="5"
               bg={imageList[item.ecommerce].color}
@@ -133,7 +68,7 @@ const ShopPage = () => {
                 height="16px"
                 objectFit="cover"
               />
-              <Text fontSize="xs" textAlign="center">
+              <Text fontSize="11px" fontWeight="semibold" textAlign="center">
                 {item.name}
               </Text>
             </Flex>
@@ -152,12 +87,13 @@ const ShopPage = () => {
         <Box
           as={Flex}
           direction="column"
-          width="200px"
+          width="190px"
           minHeight="200px"
           bgColor="white"
-          p="5"
+          p="6"
           alignItems="center"
           justifyContent="center"
+          borderRadius="8px"
         >
           <Button
             leftIcon={<AddIcon />}
