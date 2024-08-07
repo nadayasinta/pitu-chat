@@ -3,24 +3,15 @@ import { useEffect, useState } from "react";
 import { AddIcon, CheckIcon } from "@chakra-ui/icons";
 import { Box, Button, Flex, Image, Text } from "@chakra-ui/react";
 
-import ShopeeIcon from "../assets/icon-shopee.svg";
-import TokopediaIcon from "../assets/icon-tokopedia.svg";
 import ShopeeLogo from "../assets/logo-shopee.svg";
 import TokopediaLogo from "../assets/logo-tokopedia.svg";
+import ShopBadge from "../components/ShopBadge";
 import { getShopList } from "../mock";
 import { Shop } from "../types";
 
-const imageList = {
-  tokopedia: {
-    logo: TokopediaLogo,
-    icon: TokopediaIcon,
-    color: "green.100",
-  },
-  shopee: {
-    logo: ShopeeLogo,
-    icon: ShopeeIcon,
-    color: "orange.100",
-  },
+const logoList = {
+  tokopedia: TokopediaLogo,
+  shopee: ShopeeLogo,
 };
 
 const ShopPage = () => {
@@ -49,29 +40,16 @@ const ShopPage = () => {
             borderRadius="8px"
           >
             <Image
-              src={imageList[item.ecommerce].logo}
-              alt="Background"
+              src={logoList[item.ecommerce]}
+              alt={`${item.ecommerce} Logo`}
               height="40px"
               objectFit="contain"
             />
-            <Flex
-              gap="1"
-              p="1"
+            <ShopBadge
+              ecommerceName={item.ecommerce}
+              shopName={item.name}
               my="4"
-              alignItems="center"
-              borderRadius="5"
-              bg={imageList[item.ecommerce].color}
-            >
-              <Image
-                src={imageList[item.ecommerce].icon}
-                alt="Background"
-                height="16px"
-                objectFit="cover"
-              />
-              <Text fontSize="11px" fontWeight="semibold" textAlign="center">
-                {item.name}
-              </Text>
-            </Flex>
+            />
             <Button
               leftIcon={<CheckIcon />}
               py="6"

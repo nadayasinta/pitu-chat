@@ -74,6 +74,7 @@ const ProtectedLayout = () => {
       gridTemplateRows="72px 1fr"
       gridTemplateColumns="112px 1fr"
       h="100vh"
+      maxH="100vh"
     >
       <GridItem
         area="header"

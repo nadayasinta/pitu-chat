@@ -14,7 +14,7 @@ export const shopList: Shop[] = [
   },
   {
     id: 2003,
-    name: "Beauty Shop",
+    name: "Beauty Shop Denpasar Official",
     ecommerce: "tokopedia",
   },
 ];
@@ -111,14 +111,14 @@ export const chatSessionList: ChatSession[] = [
     id: 3001,
     customer: customerList[0],
     createdAt: getDateMinusDays(0),
-    unreadMessage: 1,
+    unrepliedMessageCount: 2,
     lastMessage: messageList[messageList.length - 1],
   },
   {
     id: 3002,
     customer: customerList[1],
     createdAt: getDateMinusDays(0),
-    unreadMessage: 5,
+    unrepliedMessageCount: 5,
     lastMessage: {
       id: 4011,
       message:
@@ -131,7 +131,7 @@ export const chatSessionList: ChatSession[] = [
     id: 3003,
     customer: customerList[2],
     createdAt: getDateMinusDays(0),
-    unreadMessage: 0,
+    unrepliedMessageCount: 0,
     lastMessage: {
       id: 4012,
       message:
@@ -144,7 +144,7 @@ export const chatSessionList: ChatSession[] = [
     id: 3004,
     customer: customerList[3],
     createdAt: getDateMinusDays(1),
-    unreadMessage: 2,
+    unrepliedMessageCount: 2,
     lastMessage: {
       id: 4013,
       message: "Ok",
@@ -156,7 +156,7 @@ export const chatSessionList: ChatSession[] = [
     id: 3005,
     customer: customerList[4],
     createdAt: getDateMinusDays(2),
-    unreadMessage: 10,
+    unrepliedMessageCount: 10,
     lastMessage: {
       id: 4014,
       message: "Terima kasih infonya :)",
@@ -168,7 +168,7 @@ export const chatSessionList: ChatSession[] = [
     id: 3006,
     customer: customerList[5],
     createdAt: getDateMinusDays(5),
-    unreadMessage: 0,
+    unrepliedMessageCount: 1,
     lastMessage: {
       id: 4015,
       message:
@@ -181,7 +181,7 @@ export const chatSessionList: ChatSession[] = [
     id: 3007,
     customer: customerList[6],
     createdAt: getDateMinusDays(14),
-    unreadMessage: 0,
+    unrepliedMessageCount: 0,
     lastMessage: {
       id: 4016,
       message: "Sama-sama. Jika ada kendala silahkan menghubungi kami lagi.",

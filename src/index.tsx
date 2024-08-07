@@ -8,6 +8,7 @@ import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 
 import { AuthProvider } from "./contexts/Auth";
 import ProtectedLayout from "./layouts/Protected";
+import ChatPage from "./pages/Chat";
 import LoginPage from "./pages/Login";
 import ShopPage from "./pages/Shop";
 import reportWebVitals from "./reportWebVitals";
@@ -29,10 +30,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/chat",
-        element: <div>Chat List</div>,
+        element: <ChatPage />,
         children: [
           {
-            path: "/chat/:userId",
+            path: "/chat/:customerId",
             element: <div>Chat User</div>,
           },
         ],

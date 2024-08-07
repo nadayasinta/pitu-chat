@@ -34,11 +34,21 @@ export const getShopList = (): Shop[] => {
   return shopList;
 };
 
-export const getChatSession = (status: ChatSessionMenu): ChatSession[] => {
-  if ((status = "all")) return chatSessionList;
-  if ((status = "unread"))
-    return chatSessionList.filter((item) => item.unreadMessage > 0);
-  return chatSessionList.filter((item) => item.unreadMessage === 0);
+export const getChatSession = (
+  selectedShopId: string[],
+  searchName: string
+): ChatSession[] => {
+  if (selectedShopId.length === 0 && searchName === "") {
+    return chatSessionList;
+  }
+  return chatSessionList.filter((item) => {
+    const shopIdMatch = selectedShopId.includes(String(item.customer.shop.id));
+    const nameMatch = item.customer.name
+      .toLowerCase()
+      .includes(searchName.toLowerCase());
+
+    return shopIdMatch && nameMatch;
+  });
 };
 
 export const getMessage = (): Message[] => {

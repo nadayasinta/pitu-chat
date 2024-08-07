@@ -28,7 +28,7 @@ export interface ChatSession {
   id: number;
   customer: Customer;
   createdAt: string;
-  unreadMessage: number;
+  unrepliedMessageCount: number; // Indicates the count of sequential messages sent by the customer (If the count is 0, it means message have been replied to.)
   lastMessage: Message;
 }
 
@@ -39,4 +39,4 @@ export interface Message {
   createdAt: string;
 }
 
-export type ChatSessionMenu = "all" | "read" | "unread";
+export type ChatSessionMenu = "all" | "replied" | "unreplied";
