@@ -6,14 +6,37 @@ export type FC<T = object> = FunctionalComponetn<
 
 export interface User {
   id: number;
-  email: string;
   name: string;
+  email: string;
 }
 
-type EcommerceName = "tokopedia" | "shopee";
+export type EcommerceName = "tokopedia" | "shopee";
 
 export interface Shop {
   id: number;
   name: string;
   ecommerce: EcommerceName;
 }
+
+export interface Customer {
+  id: number;
+  name: string;
+  shop: Shop;
+}
+
+export interface ChatSession {
+  id: number;
+  customer: Customer;
+  createdAt: string;
+  unreadMessage: number;
+  lastMessage: Message;
+}
+
+export interface Message {
+  id: number;
+  message: string;
+  isSent: boolean; // Indicates if the message is sent by the current user
+  createdAt: string;
+}
+
+export type ChatSessionMenu = "all" | "read" | "unread";

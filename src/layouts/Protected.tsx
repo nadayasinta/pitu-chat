@@ -54,7 +54,7 @@ const menu: MenuDetail[] = [
 const ProtectedLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user, logout } = useAuth();
+  const { user, removeUser } = useAuth();
 
   const tabIndex: number = useMemo(() => {
     return menu.findIndex((item) => location.pathname.startsWith(item.path));
@@ -151,7 +151,7 @@ const ProtectedLayout = () => {
           text="Keluar"
           icon={<LogoutIcon />}
           mt="auto"
-          onClick={logout}
+          onClick={removeUser}
         />
       </GridItem>
       <GridItem area="main" bg="gray.50" overflowY="auto">

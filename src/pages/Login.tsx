@@ -22,9 +22,10 @@ import {
 
 import BackgroundImage from "../assets/background-login.svg";
 import { useAuth } from "../contexts/Auth";
+import { login } from "../mock";
 
 const LoginPage = () => {
-  const { user, login } = useAuth();
+  const { user, setUser } = useAuth();
   const location = useLocation();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [showAlert, setShowAlert] = useState<boolean>(false);
@@ -33,13 +34,9 @@ const LoginPage = () => {
 
   const handleSubmit = (event: React.FormEvent<HTMLInputElement>) => {
     event.preventDefault();
-    if (password === "abc123") {
-      const id = Math.floor(Math.random() * 1000) + 1;
-      login({
-        id,
-        email,
-        name: `User ${id}`,
-      });
+    const userData = login(email, password);
+    if (userData) {
+      setUser(userData);
     } else {
       setShowAlert(true);
     }

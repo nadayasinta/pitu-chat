@@ -6,40 +6,40 @@ const localStorageName = "userData";
 
 interface Context {
   user: User | undefined;
-  login: (user: User) => void;
-  logout: () => void;
+  setUser: (user: User) => void;
+  removeUser: () => void;
 }
 
 const AuthContext = createContext<Context>({
   user: undefined,
-  login: (_) => {
+  setUser: (_) => {
     return;
   },
-  logout: () => {
+  removeUser: () => {
     return;
   },
 });
 export const AuthProvider: FC = ({ children }) => {
-  const [user, setUser] = useState<User | undefined>(undefined);
+  const [user, setUserState] = useState<User | undefined>(undefined);
 
   useEffect(() => {
     const data = localStorage.getItem(localStorageName);
     if (data) {
-      setUser(JSON.parse(data) as User);
+      setUserState(JSON.parse(data) as User);
     }
   }, []);
 
-  const login = (user: User) => {
+  const setUser = (user: User) => {
     localStorage.setItem(localStorageName, JSON.stringify(user));
-    setUser(user);
+    setUserState(user);
   };
-  const logout = () => {
+  const removeUser = () => {
     localStorage.removeItem(localStorageName);
-    setUser(undefined);
+    setUserState(undefined);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, setUser, removeUser }}>
       {children}
     </AuthContext.Provider>
   );
