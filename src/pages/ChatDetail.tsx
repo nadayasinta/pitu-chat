@@ -126,7 +126,7 @@ const ChatDetailPage = () => {
       >
         {messageList.map((item, index) => (
           <ChatBubble
-            key={item.id}
+            key={`message-${item.id}`}
             isIncomingChat={item.isIncomingChat}
             isStartOfSequence={
               index === 0 ||
@@ -175,6 +175,7 @@ const ChatDetailPage = () => {
           bg="white"
           direction="column"
           alignItems="center"
+          textAlign="center"
         >
           <IconButton
             alignSelf="flex-end"
@@ -202,7 +203,7 @@ const ChatDetailPage = () => {
             shopName={sessionDetail.customer.shop.name}
             my="4"
           />
-          <Box mt="20" textAlign="center">
+          <Box mt="20">
             <Text fontSize="sm" fontWeight="bold" my="2">
               About conversation
             </Text>

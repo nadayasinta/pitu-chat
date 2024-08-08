@@ -29,7 +29,7 @@ const ShopPage = () => {
       <Flex gap="6" wrap="wrap" alignItems="stretch">
         {shopList.map((item) => (
           <Box
-            key={item.id}
+            key={`shop-${item.id}`}
             as={Flex}
             direction="column"
             width="190px"

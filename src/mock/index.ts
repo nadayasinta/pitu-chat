@@ -50,7 +50,7 @@ export const getChatSession = (filter: ChatSessionFilter): ChatSession[] => {
 };
 
 export const getChatSessionById = (id: string): ChatSession | undefined => {
-  return chatSessionList.find((item) => (item.id = parseInt(id)));
+  return chatSessionList.find((item) => item.id === parseInt(id));
 };
 
 export const getMessage = (): Message[] => {

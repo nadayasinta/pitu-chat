@@ -131,7 +131,7 @@ const ProtectedLayout = () => {
           <TabList>
             {menu.map((item, index) => (
               <Tab
-                key={item.title}
+                key={`menu-${item.title}`}
                 width="112px"
                 height="100%"
                 _selected={{

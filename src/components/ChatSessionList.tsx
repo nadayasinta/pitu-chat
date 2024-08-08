@@ -70,7 +70,7 @@ const ChatSessionList: FC<Props> = ({ sessionList }) => {
         {sessionMenu.map((item) => (
           <Tab
             w="33%"
-            key={item.id}
+            key={`tab-${item.id}`}
             _selected={{
               borderBottomColor: "blue.500",
               borderBottomWidth: "4px",
@@ -85,7 +85,7 @@ const ChatSessionList: FC<Props> = ({ sessionList }) => {
         ))}
       </TabList>
       <TabPanels>
-        {sessionMenu.map((_, index) => (
+        {sessionMenu.map((session, index) => (
           <TabPanel
             p="0"
             as={Flex}
@@ -95,7 +95,7 @@ const ChatSessionList: FC<Props> = ({ sessionList }) => {
           >
             {sessionTabPanels[index].map((item) => (
               <Grid
-                key={item.id}
+                key={`card-${session.id}-${item.id}`}
                 as={Link}
                 to={`${item.id}`}
                 templateColumns="48px 1fr auto"
