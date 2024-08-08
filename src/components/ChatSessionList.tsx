@@ -84,6 +84,7 @@ const ChatSessionList: FC<Props> = ({ sessionList }) => {
           </Tab>
         ))}
       </TabList>
+
       <TabPanels>
         {sessionMenu.map((session, index) => (
           <TabPanel
@@ -93,6 +94,11 @@ const ChatSessionList: FC<Props> = ({ sessionList }) => {
             h="calc(100vh - 192px)"
             overflowY="auto"
           >
+            {!sessionTabPanels[index].length && (
+              <Text fontSize="xs" color="gray.500" textAlign="center" m="8">
+                Tidak ada chat
+              </Text>
+            )}
             {sessionTabPanels[index].map((item) => (
               <Grid
                 key={`card-${session.id}-${item.id}`}

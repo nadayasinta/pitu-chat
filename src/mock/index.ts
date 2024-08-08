@@ -1,4 +1,11 @@
-import { ChatSession, ChatSessionFilter, Message, Shop, User } from "../types";
+import {
+  ChatSession,
+  ChatSessionDetail,
+  ChatSessionFilter,
+  Message,
+  Shop,
+  User,
+} from "../types";
 import { chatSessionList, messageList, shopList } from "./sampleData";
 
 export function getDateMinusDays(days: number) {
@@ -49,8 +56,16 @@ export const getChatSession = (filter: ChatSessionFilter): ChatSession[] => {
   });
 };
 
-export const getChatSessionById = (id: string): ChatSession | undefined => {
-  return chatSessionList.find((item) => item.id === parseInt(id));
+export const getChatSessionById = (
+  id: string
+): ChatSessionDetail | undefined => {
+  const result = chatSessionList.find((item) => item.id === parseInt(id));
+  if (!result) return undefined;
+  return {
+    id: result.id,
+    customer: { ...result.customer },
+    createdAt: result.createdAt,
+  };
 };
 
 export const getMessage = (): Message[] => {

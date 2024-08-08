@@ -43,11 +43,12 @@ const LoginPage = () => {
   };
 
   if (user) {
-    return <Navigate to="/" state={{ from: location }} replace />;
+    return <Navigate to="/chat" state={{ from: location }} replace />;
   }
 
   return (
     <Flex height="100vh">
+      {/* IMAGE SECTION*/}
       <Box flex="1" h="100%" bgColor="blue">
         <Image
           src={BackgroundImage}
@@ -57,6 +58,8 @@ const LoginPage = () => {
           objectFit="cover"
         />
       </Box>
+
+      {/* LOGIN FORM SECTION*/}
       <Box flex="1" h="100%" alignContent="center">
         <Box maxWidth="80%" m="auto" as="form" onSubmit={handleSubmit}>
           <Image

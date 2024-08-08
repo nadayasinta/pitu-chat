@@ -100,7 +100,13 @@ export const messageList: Message[] = [
   },
   {
     id: 4007,
-    message: "   Terima kasih banyak infonya",
+    message: "Terima kasih banyak info diskonnya",
+    isIncomingChat: true,
+    createdAt: getDateMinusMinutes(1),
+  },
+  {
+    id: 4008,
+    message: "Apa bisa dikirim sore ini?",
     isIncomingChat: true,
     createdAt: getDateMinusMinutes(0),
   },
@@ -111,7 +117,7 @@ export const chatSessionList: ChatSession[] = [
     id: 3001,
     customer: customerList[0],
     createdAt: getDateMinusDays(0),
-    unrepliedMessageCount: 2,
+    unrepliedMessageCount: 3,
     lastMessage: messageList[messageList.length - 1],
   },
   {

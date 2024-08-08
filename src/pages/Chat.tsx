@@ -23,6 +23,7 @@ const ChatPage = () => {
 
   return (
     <Grid gridTemplateColumns="450px 1fr">
+      {/* SESSION LIST SECTION */}
       <GridItem
         as={Grid}
         gridTemplateRows="72px 1fr"
@@ -35,6 +36,8 @@ const ChatPage = () => {
         />
         <ChatSessionList sessionList={sessionList} />
       </GridItem>
+
+      {/* CHAT SECTION */}
       {params.sessionId ? (
         <Outlet />
       ) : (

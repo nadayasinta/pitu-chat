@@ -62,6 +62,8 @@ const ShopPage = () => {
             </Button>
           </Box>
         ))}
+
+        {/* ADD SHOP CARD */}
         <Box
           as={Flex}
           direction="column"

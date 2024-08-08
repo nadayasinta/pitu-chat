@@ -20,7 +20,11 @@ const AuthContext = createContext<Context>({
   },
 });
 export const AuthProvider: FC = ({ children }) => {
-  const [user, setUserState] = useState<User | undefined>(undefined);
+  const [user, setUserState] = useState<User | undefined>({
+    id: 0,
+    name: "",
+    email: "",
+  });
 
   useEffect(() => {
     const data = localStorage.getItem(localStorageName);

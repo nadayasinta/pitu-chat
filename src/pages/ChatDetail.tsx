@@ -1,12 +1,7 @@
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import {
-  AttachmentIcon,
-  CloseIcon,
-  InfoOutlineIcon,
-  SearchIcon,
-} from "@chakra-ui/icons";
+import { AttachmentIcon, InfoOutlineIcon, SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
@@ -17,15 +12,14 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-import Avatar from "../components/Avatar";
 import ChatBubble from "../components/ChatBubble";
-import ShopBadge from "../components/ShopBadge";
-import { dateFormatter } from "../helpers";
+import ChatDetailDrawer from "../components/ChatDetailDrawer";
 import { getChatSessionById, getMessage, sentMessage } from "../mock";
 import { ChatSessionDetail, Message } from "../types";
 
 const ChatDetailPage = () => {
   const { sessionId } = useParams<{ sessionId: string }>();
+  const endOfChatContainerRef = useRef<HTMLDivElement>(null);
   const [showDetail, setShowDetail] = useState<boolean>(false);
   const [newMessage, setNewMessage] = useState<string>("");
   const [messageList, setMessageList] = useState<Message[]>([]);
@@ -44,15 +38,16 @@ const ChatDetailPage = () => {
   });
 
   useEffect(() => {
-    console.log({ sessionId });
     if (sessionId) {
-      console.log("kesini");
       setMessageList([...getMessage()]);
       const sessionData = getChatSessionById(sessionId);
-      console.log("sessionData", sessionData);
       if (sessionData) setSessionDetail({ ...sessionData });
+      scrollToEndOfChat();
     }
   }, [sessionId]);
+
+  const scrollToEndOfChat = () =>
+    endOfChatContainerRef.current?.scrollIntoView({ behavior: "smooth" });
 
   const toggleDetails = () => setShowDetail(!showDetail);
 
@@ -67,6 +62,9 @@ const ChatDetailPage = () => {
       const newMessageList = sentMessage(newMessage, messageList);
       setMessageList(newMessageList);
       setNewMessage("");
+      setTimeout(() => {
+        scrollToEndOfChat();
+      }, 10);
     }
   };
 
@@ -85,6 +83,7 @@ const ChatDetailPage = () => {
       width="100%"
       templateRows="72px 1fr 72px"
     >
+      {/* CHAT DETAIL HEADER */}
       <GridItem
         area="header"
         p="4"
@@ -115,6 +114,7 @@ const ChatDetailPage = () => {
         </Flex>
       </GridItem>
 
+      {/* CHAT SECTION */}
       <GridItem
         area="content"
         as={Flex}
@@ -142,8 +142,10 @@ const ChatDetailPage = () => {
             createdAt={item.createdAt}
           />
         ))}
+        <Box ref={endOfChatContainerRef} />
       </GridItem>
 
+      {/* INPUT CHAT SECTION */}
       <GridItem area="input" p={4} borderTop="2px" borderTopColor="gray.100">
         <Flex align="center">
           <IconButton
@@ -165,54 +167,12 @@ const ChatDetailPage = () => {
         </Flex>
       </GridItem>
 
-      {showDetail && (
-        <GridItem
-          area="detail"
-          p={4}
-          as={Flex}
-          borderLeft="2px"
-          borderLeftColor="gray.100"
-          bg="white"
-          direction="column"
-          alignItems="center"
-          textAlign="center"
-        >
-          <IconButton
-            alignSelf="flex-end"
-            aria-label="Close Details"
-            variant="ghost"
-            colorScheme="gray"
-            icon={<CloseIcon />}
-            size="sm"
-            onClick={toggleDetails}
-          />
-          <Avatar size="xl" name={sessionDetail.customer.name} my="4" />
-          <Text fontWeight="bold" fontSize="xl" my="1">
-            {sessionDetail.customer.name}
-          </Text>
-          <Text
-            fontSize="sm"
-            color="gray.500"
-            textTransform="capitalize"
-            mb="4"
-          >
-            {sessionDetail.customer.shop.ecommerce}
-          </Text>
-          <ShopBadge
-            ecommerceName={sessionDetail.customer.shop.ecommerce}
-            shopName={sessionDetail.customer.shop.name}
-            my="4"
-          />
-          <Box mt="20">
-            <Text fontSize="sm" fontWeight="bold" my="2">
-              About conversation
-            </Text>
-            <Text fontSize="sm" color="gray.500">
-              Created: {dateFormatter(sessionDetail.createdAt)}
-            </Text>
-          </Box>
-        </GridItem>
-      )}
+      {/* CHAT DETAIL DRAWER */}
+      <ChatDetailDrawer
+        session={sessionDetail}
+        showDetail={showDetail}
+        setShowDetail={setShowDetail}
+      />
     </Grid>
   );
 };
