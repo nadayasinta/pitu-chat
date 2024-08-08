@@ -24,10 +24,13 @@ export interface Customer {
   shop: Shop;
 }
 
-export interface ChatSession {
+export interface ChatSessionDetail {
   id: number;
   customer: Customer;
   createdAt: string;
+}
+
+export interface ChatSession extends ChatSessionDetail {
   unrepliedMessageCount: number; // Indicates the count of sequential messages sent by the customer (If the count is 0, it means message have been replied to.)
   lastMessage: Message;
 }
@@ -35,7 +38,7 @@ export interface ChatSession {
 export interface Message {
   id: number;
   message: string;
-  isSent: boolean; // Indicates if the message is sent by the current user
+  isIncomingChat: boolean; // Indicates if the message is sent to the current user from customer
   createdAt: string;
 }
 

@@ -44,7 +44,7 @@ interface Props {
 }
 
 const ChatSessionList: FC<Props> = ({ sessionList }) => {
-  const [tabIndex, setTabIndex] = useState<number>(2);
+  const [tabIndex, setTabIndex] = useState<number>(0);
 
   const unrepliedSession: ChatSession[] = useMemo(() => {
     return sessionList.filter((item) => item.unrepliedMessageCount > 0);
@@ -112,6 +112,7 @@ const ChatSessionList: FC<Props> = ({ sessionList }) => {
                     {item.customer.name}
                   </Text>
                   <Text fontSize="xs" my="1" w="290px" isTruncated>
+                    {!item.unrepliedMessageCount && <>&#10003; </>}
                     {item.lastMessage.message}
                   </Text>
                   <ShopBadge

@@ -15,7 +15,7 @@ const ChatPage = () => {
     shopsId: [],
     customerName: "",
   });
-  const params = useParams<{ customerId?: string }>();
+  const params = useParams<{ sessionId?: string }>();
 
   useEffect(() => {
     setSessionList(getChatSession(sessionFilter));
@@ -35,7 +35,7 @@ const ChatPage = () => {
         />
         <ChatSessionList sessionList={sessionList} />
       </GridItem>
-      {params.customerId ? (
+      {params.sessionId ? (
         <Outlet />
       ) : (
         <GridItem

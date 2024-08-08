@@ -49,6 +49,10 @@ export const getChatSession = (filter: ChatSessionFilter): ChatSession[] => {
   });
 };
 
+export const getChatSessionById = (id: string): ChatSession | undefined => {
+  return chatSessionList.find((item) => (item.id = parseInt(id)));
+};
+
 export const getMessage = (): Message[] => {
   return messageList;
 };
@@ -62,7 +66,7 @@ export const sentMessage = (
     {
       id: generateRandomId(),
       message,
-      isSent: true,
+      isIncomingChat: false,
       createdAt: getDateMinusMinutes(0),
     },
   ];

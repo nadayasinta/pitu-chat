@@ -37,7 +37,7 @@ export const customerList: Customer[] = [
   },
   {
     id: 2004,
-    name: "Gabby Deming",
+    name: "Catina Jennet Norman Willoughby",
     shop: shopList[0],
   },
   {
@@ -61,47 +61,47 @@ export const messageList: Message[] = [
   {
     id: 4001,
     message: "Halo",
-    isSent: false,
+    isIncomingChat: true,
     createdAt: getDateMinusMinutes(40),
   },
   {
     id: 4002,
     message: "Apakah untuk produk nomer 007 stoknya masih tersedia?",
-    isSent: false,
+    isIncomingChat: true,
     createdAt: getDateMinusMinutes(40),
   },
   {
     id: 4003,
     message:
       "Halo! Terima kasih telah menghubungi kami. Untuk produk nomer 007, stoknya masih tersedia. Anda bisa langsung melakukan pembelian melalui halaman produk.",
-    isSent: true,
+    isIncomingChat: false,
     createdAt: getDateMinusMinutes(39),
   },
   {
     id: 4004,
     message:
       "Terima kasih atas informasinya. Apakah ada diskon atau promo untuk produk ini?",
-    isSent: false,
+    isIncomingChat: true,
     createdAt: getDateMinusMinutes(20),
   },
   {
     id: 4005,
     message:
       "Saat ini, kami sedang menawarkan diskon 10% untuk pembelian di atas Rp500.000. Anda bisa memasukkan kode promo DISKON10 saat checkout untuk mendapatkan diskonnya.",
-    isSent: true,
+    isIncomingChat: false,
     createdAt: getDateMinusMinutes(20),
   },
   {
     id: 4006,
     message:
       "Baik, kalau begitu saya akan memesan untuk 3 produk agar mendapatkan diskonnya",
-    isSent: false,
+    isIncomingChat: true,
     createdAt: getDateMinusMinutes(1),
   },
   {
     id: 4007,
     message: "   Terima kasih banyak infonya",
-    isSent: false,
+    isIncomingChat: true,
     createdAt: getDateMinusMinutes(0),
   },
 ];
@@ -123,7 +123,7 @@ export const chatSessionList: ChatSession[] = [
       id: 4011,
       message:
         "Saya sudah melakukan pembayaran, tapi status pesanan saya masih Pending. Apakah bisa dibantu untuk mempercepat prosesnya?",
-      isSent: false,
+      isIncomingChat: true,
       createdAt: getDateMinusDays(0),
     },
   },
@@ -136,7 +136,7 @@ export const chatSessionList: ChatSession[] = [
       id: 4012,
       message:
         "Terima kasih telah menghubungi kami, pesanan anda sedang dalam persiapan",
-      isSent: true,
+      isIncomingChat: false,
       createdAt: getDateMinusDays(0),
     },
   },
@@ -148,7 +148,7 @@ export const chatSessionList: ChatSession[] = [
     lastMessage: {
       id: 4013,
       message: "Ok",
-      isSent: false,
+      isIncomingChat: true,
       createdAt: getDateMinusDays(1),
     },
   },
@@ -160,7 +160,7 @@ export const chatSessionList: ChatSession[] = [
     lastMessage: {
       id: 4014,
       message: "Terima kasih infonya :)",
-      isSent: false,
+      isIncomingChat: true,
       createdAt: getDateMinusDays(2),
     },
   },
@@ -173,7 +173,7 @@ export const chatSessionList: ChatSession[] = [
       id: 4015,
       message:
         "Apakah saya akan mendapatkan nomor resi untuk melacak pengirimannya?",
-      isSent: false,
+      isIncomingChat: true,
       createdAt: getDateMinusDays(5),
     },
   },
@@ -185,7 +185,7 @@ export const chatSessionList: ChatSession[] = [
     lastMessage: {
       id: 4016,
       message: "Sama-sama. Jika ada kendala silahkan menghubungi kami lagi.",
-      isSent: true,
+      isIncomingChat: false,
       createdAt: getDateMinusDays(14),
     },
   },
