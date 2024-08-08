@@ -40,3 +40,8 @@ export interface Message {
 }
 
 export type ChatSessionMenu = "all" | "replied" | "unreplied";
+
+export interface ChatSessionFilter {
+  customerName: string;
+  shopsId: number[];
+}

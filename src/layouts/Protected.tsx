@@ -71,10 +71,10 @@ const ProtectedLayout = () => {
   return (
     <Grid
       templateAreas={`"header header" "nav main"`}
-      gridTemplateRows="72px 1fr"
-      gridTemplateColumns="112px 1fr"
+      gridTemplateRows="72px calc(100vh - 72px)"
+      gridTemplateColumns="112px calc(100vw - 112px)"
       h="100vh"
-      maxH="100vh"
+      w="100vw"
     >
       <GridItem
         area="header"
@@ -155,7 +155,7 @@ const ProtectedLayout = () => {
           onClick={removeUser}
         />
       </GridItem>
-      <GridItem area="main" bg="gray.50" overflowY="auto">
+      <GridItem area="main" bg="gray.50">
         <Outlet />
       </GridItem>
     </Grid>

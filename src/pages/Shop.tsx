@@ -22,7 +22,7 @@ const ShopPage = () => {
   }, []);
 
   return (
-    <Box p="6">
+    <Box p="6" h="100%" overflow="auto">
       <Text fontWeight="bold" mb="6">
         Shop
       </Text>
