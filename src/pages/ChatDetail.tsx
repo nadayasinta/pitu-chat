@@ -51,8 +51,11 @@ const ChatDetailPage = () => {
     }
   }, [sessionId, navigate]);
 
-  const scrollToEndOfChat = () =>
-    endOfChatContainerRef.current?.scrollIntoView({ behavior: "smooth" });
+  const scrollToEndOfChat = () => {
+    setTimeout(() => {
+      endOfChatContainerRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 10);
+  };
 
   const toggleDetails = () => setShowDetail(!showDetail);
 
@@ -67,9 +70,7 @@ const ChatDetailPage = () => {
       const newMessageList = sentMessage(newMessage, messageList);
       setMessageList(newMessageList);
       setNewMessage("");
-      setTimeout(() => {
-        scrollToEndOfChat();
-      }, 10);
+      scrollToEndOfChat();
     }
   };
 
