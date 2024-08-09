@@ -64,13 +64,14 @@ const ChatSessionList: FC<Props> = ({ sessionList }) => {
       colorScheme="blue"
       index={tabIndex}
       onChange={setTabIndex}
-      width="450px"
+      width="370px"
     >
       <TabList height="48px">
         {sessionMenu.map((item) => (
           <Tab
             w="33%"
             key={`tab-${item.id}`}
+            px="1"
             _selected={{
               borderBottomColor: "blue.500",
               borderBottomWidth: "4px",
@@ -104,9 +105,9 @@ const ChatSessionList: FC<Props> = ({ sessionList }) => {
                 key={`card-${session.id}-${item.id}`}
                 as={Link}
                 to={`${item.id}`}
-                templateColumns="48px 1fr auto"
+                templateColumns="54px 1fr auto"
                 p="3"
-                gap="4"
+                gap="1"
                 borderBottom="2px"
                 borderBottomColor="gray.100"
               >
@@ -114,10 +115,10 @@ const ChatSessionList: FC<Props> = ({ sessionList }) => {
                   <Avatar name={item.customer.name} mt="1" />
                 </GridItem>
                 <GridItem as={Flex} direction="column" width="100%">
-                  <Text fontWeight="bold" fontSize="sm">
+                  <Text fontWeight="bold" fontSize="sm" w="225px" isTruncated>
                     {item.customer.name}
                   </Text>
-                  <Text fontSize="xs" my="1" w="290px" isTruncated>
+                  <Text fontSize="xs" my="1" w="225px" isTruncated>
                     {!item.unrepliedMessageCount && <>&#10003; </>}
                     {item.lastMessage.message}
                   </Text>

@@ -22,7 +22,7 @@ const ChatPage = () => {
   }, [sessionFilter]);
 
   return (
-    <Grid gridTemplateColumns="450px 1fr">
+    <Grid gridTemplateColumns="370px 1fr">
       {/* SESSION LIST SECTION */}
       <GridItem
         as={Grid}
