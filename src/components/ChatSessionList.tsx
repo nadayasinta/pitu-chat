@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import {
   Flex,
@@ -44,6 +44,7 @@ interface Props {
 }
 
 const ChatSessionList: FC<Props> = ({ sessionList }) => {
+  const { sessionId } = useParams<{ sessionId: string }>();
   const [tabIndex, setTabIndex] = useState<number>(0);
 
   const unrepliedSession: ChatSession[] = useMemo(() => {
@@ -110,6 +111,12 @@ const ChatSessionList: FC<Props> = ({ sessionList }) => {
                 gap="1"
                 borderBottom="2px"
                 borderBottomColor="gray.100"
+                {...(sessionId === String(item.id)
+                  ? {
+                      cursor: "auto",
+                      bg: "gray.100",
+                    }
+                  : {})}
               >
                 <GridItem>
                   <Avatar name={item.customer.name} mt="1" />

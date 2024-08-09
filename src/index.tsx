@@ -10,6 +10,7 @@ import { AuthProvider } from "./contexts/Auth";
 import ProtectedLayout from "./layouts/Protected";
 import ChatPage from "./pages/Chat";
 import ChatDetailPage from "./pages/ChatDetail";
+import ErrorPage from "./pages/Error";
 import LoginPage from "./pages/Login";
 import ShopPage from "./pages/Shop";
 import reportWebVitals from "./reportWebVitals";
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <ProtectedLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/chat",

@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { AttachmentIcon, InfoOutlineIcon, SearchIcon } from "@chakra-ui/icons";
 import {
@@ -18,6 +18,7 @@ import { getChatSessionById, getMessage, sentMessage } from "../mock";
 import { ChatSessionDetail, Message } from "../types";
 
 const ChatDetailPage = () => {
+  const navigate = useNavigate();
   const { sessionId } = useParams<{ sessionId: string }>();
   const endOfChatContainerRef = useRef<HTMLDivElement>(null);
   const [showDetail, setShowDetail] = useState<boolean>(false);
@@ -39,12 +40,16 @@ const ChatDetailPage = () => {
 
   useEffect(() => {
     if (sessionId) {
-      setMessageList([...getMessage()]);
       const sessionData = getChatSessionById(sessionId);
-      if (sessionData) setSessionDetail({ ...sessionData });
-      scrollToEndOfChat();
+      if (sessionData) {
+        setSessionDetail({ ...sessionData });
+        setMessageList([...getMessage()]);
+        scrollToEndOfChat();
+      } else {
+        navigate("/chat");
+      }
     }
-  }, [sessionId]);
+  }, [sessionId, navigate]);
 
   const scrollToEndOfChat = () =>
     endOfChatContainerRef.current?.scrollIntoView({ behavior: "smooth" });
