@@ -1,5 +1,14 @@
-This project was bootstrapped with
-[Create React App](https://github.com/facebook/create-react-app).
+# Chat Aggregator Application
+
+PituChat is a web application that aggregates chat from multiple e-commerce marketplaces.
+
+## Requirements
+
+This project requires NodeJS version 18 and NPM version 10.
+
+## Technologies Used:
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This project leverages the following technologies: React version 18, Typescript, Chakra UI, React Router Dom.
 
 ## Available Scripts
 
@@ -51,9 +60,32 @@ small and middle deployments, and you shouldn’t feel obligated to use this
 feature. However we understand that this tool wouldn’t be useful if you couldn’t
 customize it when you are ready for it.
 
-## Learn More
+## Source Code Folder Structure (`/src`)
 
-You can learn more in the
-[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    .
+    ├── ...
+    ├── src
+    │  ├── assets       # Contains project assets (images, icons, etc.)
+    │  ├── components   # Reusable components
+    │  ├── context      # Manages global state
+    │  ├── helpers      # Utility functions and text formatters
+    │  ├── layouts      # Layout components
+    │  ├── mock         # Mock APIs and sample data (delete this folder when integrate to actual API)
+    │  ├── pages        # Page components for routing
+    │  ├── types        # TypeScript type definitions
+    │  ├── theme.ts     # Chakra UI theme configuration
+    │  └── ...
+    └── ...
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Deploy Server Staging
+
+Check the staging site [here](https://lucent-palmier-4b3135.netlify.app/) (deployed using Netlify)
+
+## Area of Improvements
+
+- Enhance the design to be more responsive across different screen sizes and devices
+- Implement Real API Integration:
+  - Replace mock data with actual API calls
+  - Implement error handling for API requests (e.g., display error messages to users)
+  - Implement loading indicators during API requests for a smoother user experience
+- Improve how authentication data is stored for better security.
